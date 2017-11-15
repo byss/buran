@@ -22,16 +22,16 @@ OptionParser.new do |opts|
 	
 	opts.on('-l', '--login [LOGIN]', 'Apple Developer Center login (email)') do |login|
 		CONF['DEVCENTER_LOGIN'] = login unless login.nil?
-  end
-  
+	end
+	
 	opts.on('-t', '--team-id [TEAM_ID]', 'Development team ID (required for multi-team accounts)') do |team_id|
 		CONF['TEAM_ID'] = team_id unless team_id.nil?
-  end
-  
-  opts.on('-b', '--bundle-regex [REGEX]', 'Regex for affected bundle ids') do |regex|
-  	CONF['BUNDLE_REGEX'] = regex unless regex.nil?
-  end
-  
+	end
+	
+	opts.on('-b', '--bundle-regex [REGEX]', 'Regex for affected bundle ids') do |regex|
+		CONF['BUNDLE_REGEX'] = regex unless regex.nil?
+	end
+	
 	opts.on('-a', '--[no-]add-devices', 'Add all devices to affected profiles') do |add|
 		CONF['ADD_DEVICES'] = add
 	end
@@ -39,11 +39,11 @@ OptionParser.new do |opts|
 	opts.on('-d', '--[no-]download', 'Download profiles to default profiles directory') do |download|
 		CONF['DOWNLOAD'] = download
 	end
-  
+	
 	opts.on('-D', '--[no-]debug', 'Enables various debugging stuff') do |debug|
 		CONF['DEBUG'] = debug
 	end
-  
+	
 	opts.on_tail('-h', '--help', 'Show this message') do
 		puts opts
 		exit
