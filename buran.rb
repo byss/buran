@@ -85,13 +85,17 @@ Spaceship::Portal.provisioning_profile.all.each do |profile|
 	next unless bundle_regex.nil? || bundle_regex.match(profile.app.bundle_id)
 	
 	if CONF['ADD_DEVICES']
-		profile_udids = profile.devices.map { |device| device.udid }.sort
-		if profile_udids == all_udids
-			puts 'All devices are already added'
+		if profile.distribution_method == 'store'
+			puts 'AppStore profile, leaving devices as is'
 		else
-			profile.devices = all_devices
-			profile = profile.update!
-			puts "Updated #{profile.name} with #{all_devices.length} device(s)"
+			profile_udids = profile.devices.map { |device| device.udid }.sort
+			if profile_udids == all_udids
+				puts 'All devices are already added'
+			else
+				profile.devices = all_devices
+				profile = profile.update!
+				puts "Updated #{profile.name} with #{all_devices.length} device(s)"
+			end
 		end
 	end
 
