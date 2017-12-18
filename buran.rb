@@ -79,6 +79,11 @@ if CONF['ADD_DEVICES']
 	end
 end
 
+profiles_path=File.expand_path("~/Library/MobileDevice/Provisioning Profiles/")
+if CONF['DOWNLOAD']
+	FileUtils.mkdir_p(profiles_path)
+end
+
 bundle_regex = /#{CONF['BUNDLE_REGEX']}/ if CONF.has_key? 'BUNDLE_REGEX'
 Spaceship::Portal.provisioning_profile.all.each do |profile|
 	puts "Next: #{profile.name} for #{profile.app.bundle_id}"
@@ -101,7 +106,7 @@ Spaceship::Portal.provisioning_profile.all.each do |profile|
 
 	if CONF['DOWNLOAD']
 		puts "Downloading #{profile.name}…"
-		File.write(File.expand_path("~/Library/MobileDevice/Provisioning Profiles/#{profile.name}.mobileprovision"), profile.download)
+		File.write("#{profiles_path}/#{profile.name}.mobileprovision", profile.download)
 	end
 end
 
