@@ -8,9 +8,11 @@
    * As a GEM package (`sudo gem install cocoapods`, not recommended unless you do know your stuff).
 1. Clone this repo (`git clone -- https://github.com/byss/buran ~/Repos/buran`).
 1. (Optional) Create symlink for a suitable pre-crafted Buran launcher (e.g. `ln -s ~/Repos/buran/buran-fabric-fastlane.sh ~/Repos/buran/buran.sh` for Fabric distribution).
-1. (Optional) Add repo directory to `$PATH` (add `export PATH="~/Repos/buran:${PATH}"`) and restart your shell/terminal emulator.
+1. (Optional) Add repo directory to `$PATH` (add `export PATH="~/Repos/buran:${PATH}"` into your `~/.bash_profile`) and restart your shell/terminal emulator.
 1. Launch & enjoy fixed & downloaded profiles, simply typing `buran.sh -l <your-appple-dev-email> -t <your-team-id> -b <affected-bundle-regex> -a -d`. Example: `buran.sh -l kirrbyss@gmail.com -t 
 LSKU6K4UN2 -b '^hk.walletkeeper.*'`.
+   Full script name (`buran-fabric-fastlane.sh`) is required if symlink creation is skipped on third step.
+   Full script path (`~/Repos/buran/buran.sh`) is required if `$PATH` is not edited on fourth step.
 
 ## Configuration
 
